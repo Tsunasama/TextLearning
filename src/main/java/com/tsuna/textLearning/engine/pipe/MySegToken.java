@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2018. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
+ *  Copyright ©Tsunasama 2018 - 2023.
+ *  Project : TextLearning
+ *  File : MySegToken.java
+ *  Date : 18-5-11 下午2:16
  */
 
 package com.tsuna.textLearning.engine.pipe;
