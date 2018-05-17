@@ -32,8 +32,8 @@ public class FolderIteratorUtil {
                 new File[]{new File(path)},
                 new FileFilter() {
                     @Override
-                    public boolean accept(File pathname) {
-                        return pathname.toPath().endsWith(".txt");
+                    public boolean accept(File path) {
+                        return path.toString().endsWith(".txt");
                     }
                 },
                 FileIterator.LAST_DIRECTORY
