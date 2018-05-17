@@ -7,6 +7,9 @@
 
 package com.tsuna.textLearning.engine.execution;
 
+import cc.mallet.pipe.SerialPipes;
+import cc.mallet.pipe.iterator.FileIterator;
+
 import java.io.IOException;
 
 /**
@@ -18,7 +21,14 @@ public interface ITextEngine<T> {
     /**
      * execute the the processor and get the handle result
      *
+     * @param filePath the root to search for files to be executed
+     * @param numTopics indicate the count of topics
+     * @param alpha the argument to build a model,see{@link cc.mallet.topics.ParallelTopicModel}
+     * @param beta the argument to build a model,see {@link cc.mallet.topics.ParallelTopicModel}
+     * @param iterator to iterate all accordant file in the {@code filePath}
+     * @param pipes pipeline to do pretreatment on files
      * @return execution result,see {@link com.tsuna.textLearning.engine.result.ExecutionResultBase}
+     * @throws IOException file is not found
      */
-    T execute(String filePath, int numTopics, double alpha, double beta) throws IOException;
+    T execute(int numTopics, double alpha, double beta, String filePath, FileIterator iterator, SerialPipes pipes) throws IOException;
 }

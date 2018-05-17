@@ -13,52 +13,16 @@ import cc.mallet.topics.ParallelTopicModel;
 import cc.mallet.types.InstanceList;
 import com.tsuna.textLearning.engine.result.DefaultChineseExecutionResult;
 import com.tsuna.textLearning.engine.result.DefaultChineseExecutionResultBuilder;
-import com.tsuna.textLearning.engine.util.FolderIteratorUtil;
-import com.tsuna.textLearning.engine.util.PipeListUtil;
 
 import java.io.*;
 
-public class DefaultTxtExecutor implements IReusable<ParallelTopicModel>, ITextEngine<DefaultChineseExecutionResult> {
+public abstract class DefaultExecutorBase implements IReusable<ParallelTopicModel>, ITextEngine<DefaultChineseExecutionResult> {
 
     private static String DEFAULT_MODEL_SAVE_PATH = "models/";
+
     private ParallelTopicModel model;
     private InstanceList instances;
-    private SerialPipes pipes;
-
-    /**
-     * @param filePath if it is null or empty use the default filePath {@code data/train}.otherwise
-     *                 use it as the root folder and traverse all sub folders to find text
-     * @return execution result object
-     */
-    @Override
-    public DefaultChineseExecutionResult execute(String filePath, int numTopics, double alpha, double beta) throws IOException {
-        //Build process pipe
-        pipes = PipeListUtil.getStandardChineseHandlePipe();
-
-        //Build file iterator(files to be processed)
-        FileIterator folderIterator;
-        if (filePath == null || filePath.equals("")) {
-            folderIterator = FolderIteratorUtil.getDefaultDevelopingTextFileIterator();
-        } else {
-            folderIterator = FolderIteratorUtil.getTextFileIterator(filePath);
-        }
-
-        //Build instanceList which contains all process instances(each instance presents an file to be processed)
-        InstanceList instances = new InstanceList(pipes);
-        instances.addThruPipe(folderIterator);
-
-        //Build process model
-        model = new ParallelTopicModel(numTopics, alpha, beta);
-        model.addInstances(instances);
-        model.setNumThreads(4);
-        model.setNumIterations(50);
-        model.estimate();
-
-        //Build execution result
-        DefaultChineseExecutionResultBuilder builder = new DefaultChineseExecutionResultBuilder(model);
-
-        return builder.build();
-    }
+    SerialPipes pipes;
 
     @Override
     public void saveModel(String path, String fileName) throws IOException, IllegalAccessException {
@@ -101,5 +65,30 @@ public class DefaultTxtExecutor implements IReusable<ParallelTopicModel>, ITextE
             result = ois.readObject();
         }
         return (ParallelTopicModel) result;
+    }
+
+    @Override
+    public DefaultChineseExecutionResult execute(int numTopics, double alpha, double beta, String filePath, FileIterator iterator, SerialPipes pipes) throws IOException {
+        this.pipes = pipes;
+
+        //Build instanceList which contains all process instances(each instance presents an file to be processed)
+        InstanceList instances = new InstanceList(pipes);
+        instances.addThruPipe(iterator);
+
+        //Build process model
+        model = new ParallelTopicModel(numTopics, alpha, beta);
+        model.addInstances(instances);
+        model.setNumThreads(4);
+        model.setNumIterations(50);
+        model.estimate();
+
+        //Build execution result
+        DefaultChineseExecutionResultBuilder builder = new DefaultChineseExecutionResultBuilder(model);
+
+        return builder.build();
+    }
+
+    public ParallelTopicModel getModel() {
+        return model;
     }
 }
