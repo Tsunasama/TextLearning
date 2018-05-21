@@ -13,6 +13,9 @@ import com.tsuna.textLearning.engine.result.element.Topic;
 
 import java.util.List;
 
+/**
+ * An execution result
+ */
 public abstract class ExecutionResultBase {
     private List<Topic> topics;
     private List<Instance> instances;
@@ -26,8 +29,25 @@ public abstract class ExecutionResultBase {
         return topics;
     }
 
-
     List<Instance> getInstances() {
         return instances;
+    }
+
+    public String getTopicsDescription() {
+        List<Topic> topics = this.getTopics();
+        StringBuilder rtn = new StringBuilder();
+        for (Topic topic : topics) {
+            rtn.append(topic.toString());
+        }
+        return rtn.toString();
+    }
+
+    public String getInstancesDescription() {
+        List<Instance> instances = this.getInstances();
+        StringBuilder rtn = new StringBuilder();
+        for (Instance instance : instances) {
+            rtn.append(instance.toString());
+        }
+        return rtn.toString();
     }
 }

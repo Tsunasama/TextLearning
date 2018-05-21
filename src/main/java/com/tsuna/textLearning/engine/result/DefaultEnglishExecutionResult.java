@@ -1,8 +1,8 @@
 /*
  *  Copyright ©Tsunasama 2018 - 2023.
  *  Project : TextLearning
- *  File : DefaultChineseExecutionResult.java
- *  Date : 18-5-16 下午3:53
+ *  File : DefaultEnglishExecutionResult.java
+ *  Date : 18-5-21 下午9:36
  */
 
 package com.tsuna.textLearning.engine.result;
@@ -13,20 +13,20 @@ import com.tsuna.textLearning.engine.result.element.Topic;
 
 import java.util.List;
 
-public class DefaultChineseExecutionResult extends ExecutionResultBase {
-    //the alphabet of all instances
+public class DefaultEnglishExecutionResult extends ExecutionResultBase {
+    //alphabet of all instances
     private Alphabet alphabet;
 
-    DefaultChineseExecutionResult(List<Topic> topics, List<Instance> instances, Alphabet alphabet) {
+    DefaultEnglishExecutionResult(List<Topic> topics, List<Instance> instances, Alphabet alphabet) {
         super(topics, instances);
         this.alphabet = alphabet;
     }
 
     @Override
     public String toString() {
-        return "------------主题-------------\n" +
+        return "------------Topics-------------\n" +
                 super.getTopicsDescription() +
-                "------------文本实例------------\n" +
+                "------------Instances------------\n" +
                 super.getInstancesDescription();
     }
 }

@@ -7,6 +7,11 @@
 
 package com.tsuna.textLearning.engine.execution;
 
+/**
+ * Represents resusable executor which could serialize their model persistantly
+ *
+ * @param <T> model type
+ */
 public interface IReusable<T> {
     /**
      * Save(Serialize) the model at the indicated path
@@ -22,5 +27,4 @@ public interface IReusable<T> {
      * @return deserialized object to read
      */
     T readModel(String path) throws Exception;
-
 }

@@ -1,8 +1,8 @@
 /*
  *  Copyright ©Tsunasama 2018 - 2023.
  *  Project : TextLearning
- *  File : DefaultChineseExecutionResultBuilder.java
- *  Date : 18-5-16 下午4:28
+ *  File : DefaultEnglishExecutionResultBuilder.java
+ *  Date : 18-5-21 下午9:46
  */
 
 package com.tsuna.textLearning.engine.result;
@@ -20,20 +20,20 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Default Chinese result builder to build result using a {@link ParallelTopicModel} to estimate and collect
- * the topics and instances
+ * Default English result builder to build result using a {@link cc.mallet.topics.ParallelTopicModel} to estimate and
+ * collect the topics and instances
  */
-public class DefaultChineseExecutionResultBuilder implements IExecutionResultBuilder<DefaultChineseExecutionResult> {
+public class DefaultEnglishExecutionResultBuilder implements IExecutionResultBuilder<DefaultEnglishExecutionResult> {
 
     private ParallelTopicModel model;
 
-    public DefaultChineseExecutionResultBuilder(ParallelTopicModel model) {
+    public DefaultEnglishExecutionResultBuilder(ParallelTopicModel model) {
         this.model = model;
     }
 
     @Override
-    public DefaultChineseExecutionResult build() {
-        return new DefaultChineseExecutionResult(
+    public DefaultEnglishExecutionResult build() {
+        return new DefaultEnglishExecutionResult(
                 collectTopics(),
                 collectInstances(),
                 model.alphabet

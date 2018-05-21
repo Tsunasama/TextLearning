@@ -14,7 +14,7 @@ import com.tsuna.textLearning.engine.util.PipeListUtil;
 
 import java.io.IOException;
 
-public class DefaultChineseExeutor extends DefaultExecutorBase {
+public class DefaultChineseExeutor extends DefaultChineseExecutorBase {
     /**
      * Use the default Chinese handling pipeline to do pre-execution on files.
      *

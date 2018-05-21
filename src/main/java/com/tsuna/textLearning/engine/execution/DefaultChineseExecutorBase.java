@@ -16,7 +16,7 @@ import com.tsuna.textLearning.engine.result.DefaultChineseExecutionResultBuilder
 
 import java.io.*;
 
-public abstract class DefaultExecutorBase implements IReusable<ParallelTopicModel>, ITextEngine<DefaultChineseExecutionResult> {
+public abstract class DefaultChineseExecutorBase implements IReusable<ParallelTopicModel>, ITextEngine<DefaultChineseExecutionResult> {
 
     private static String DEFAULT_MODEL_SAVE_PATH = "models/";
 
