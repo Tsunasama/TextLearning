@@ -60,4 +60,17 @@ public class PipeListUtil {
         pipeList.add(new Target2Label());
         return new SerialPipes(pipeList);
     }
+
+    public static SerialPipes getXmlUtf8ChineseHandlePipe() {
+        ArrayList<Pipe> pipeList = new ArrayList<>();
+        pipeList.add(new Input2CharSequence("utf-8"));
+        pipeList.add(new CharSequenceRemoveHTML());
+        pipeList.add(new ChineseCharSequence2TokenSequence());
+        pipeList.add(new TokenSequenceLowercase());
+        pipeList.add(new TokenSequenceRemoveStopwords(new File(CHINESE_STOP_WORD_LIST_FILE_PATH),
+                "utf-8", false, false, false));
+        pipeList.add(new TokenSequence2FeatureSequence());
+        pipeList.add(new Target2Label());
+        return new SerialPipes(pipeList);
+    }
 }

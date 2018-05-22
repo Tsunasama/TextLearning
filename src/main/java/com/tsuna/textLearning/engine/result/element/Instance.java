@@ -11,6 +11,14 @@ public class Instance {
     private String path;
     private int topicTempId;
 
+    public String getPath() {
+        return path;
+    }
+
+    public int getTopicTempId() {
+        return topicTempId;
+    }
+
     public Instance(String path, int topicTempId) {
         this.path = path;
         this.topicTempId = topicTempId;

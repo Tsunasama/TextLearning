@@ -19,6 +19,14 @@ public class Topic {
         return description;
     }
 
+    public String getDescriptionString() {
+        StringBuilder builder = new StringBuilder();
+        for (String str : description) {
+            builder.append(str).append(" ");
+        }
+        return builder.toString();
+    }
+
     public void setDescription(List<String> description) {
         this.description = description;
     }

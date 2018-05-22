@@ -25,11 +25,11 @@ public abstract class ExecutionResultBase {
         this.instances = instances;
     }
 
-    List<Topic> getTopics() {
+    public List<Topic> getTopics() {
         return topics;
     }
 
-    List<Instance> getInstances() {
+    public List<Instance> getInstances() {
         return instances;
     }
 

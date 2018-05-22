@@ -20,6 +20,10 @@ public class FolderIteratorUtil {
         return getTextFileIterator(DEFAULT_DEVELOPING_FILE_PATH);
     }
 
+    public static FileIterator getDefaultXmlFileIterator() {
+        return getXmlFileIterator(DEFAULT_DEVELOPING_FILE_PATH);
+    }
+
     /**
      * Using the indicated {@code path} to build a {@code FileIterator} , and filter
      * files name ends with ".txt"
@@ -37,6 +41,24 @@ public class FolderIteratorUtil {
                     }
                 },
                 FileIterator.LAST_DIRECTORY
+        );
+    }
+
+    /**
+     * Using the indicated {@code path} to build a {@code FileIterator} , and filter
+     * files name ends with ".xml"
+     *
+     * @param path the root path which includes all files
+     * @return customized file iterator
+     */
+    public static FileIterator getXmlFileIterator(final String path) {
+        return new FileIterator(
+                new File[]{new File(path)}, new FileFilter() {
+            @Override
+            public boolean accept(File path) {
+                return path.toString().endsWith(".xml");
+            }
+        }, FileIterator.LAST_DIRECTORY
         );
     }
 }
