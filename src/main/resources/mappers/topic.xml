@@ -5,7 +5,7 @@
 <mapper namespace="com.tsuna.textLearning.persistance.mapper.TopicMapper">
 
     <select id="getTopic" parameterType="int" resultType="topic">
-        SELECT description FROM topic WHERE id=#{id}
+        SELECT id,description FROM topic WHERE id=#{id}
     </select>
 
     <insert id="insertTopic" parameterType="topic" useGeneratedKeys="true" keyProperty="id">

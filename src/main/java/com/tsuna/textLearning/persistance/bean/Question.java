@@ -7,6 +7,10 @@
 
 package com.tsuna.textLearning.persistance.bean;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Question {
     private int id;
     private String content;
@@ -18,6 +22,11 @@ public class Question {
     private String description;
     private Topic topic;
 
+    public Question() {
+        super();
+    }
+
+    @XmlElement(name = "topic")
     public Topic getTopic() {
         return topic;
     }
@@ -26,6 +35,7 @@ public class Question {
         this.topic = topic;
     }
 
+    @XmlElement(name = "id")
     public int getId() {
         return id;
     }
@@ -34,6 +44,7 @@ public class Question {
         this.id = id;
     }
 
+    @XmlElement(name = "content")
     public String getContent() {
         return content;
     }
@@ -42,6 +53,7 @@ public class Question {
         this.content = content;
     }
 
+    @XmlElement(name = "correct")
     public Option getCorrect() {
         return correct;
     }
@@ -50,6 +62,7 @@ public class Question {
         this.correct = correct;
     }
 
+    @XmlElement(name = "A")
     public String getA() {
         return A;
     }
@@ -58,6 +71,7 @@ public class Question {
         this.A = a;
     }
 
+    @XmlElement(name = "B")
     public String getB() {
         return B;
     }
@@ -66,6 +80,7 @@ public class Question {
         this.B = b;
     }
 
+    @XmlElement(name = "C")
     public String getC() {
         return C;
     }
@@ -74,6 +89,7 @@ public class Question {
         this.C = c;
     }
 
+    @XmlElement(name = "D")
     public String getD() {
         return D;
     }
@@ -82,6 +98,7 @@ public class Question {
         this.D = d;
     }
 
+    @XmlElement(name = "description")
     public String getDescription() {
         return description;
     }

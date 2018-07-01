@@ -34,7 +34,7 @@ public class TopicMapperTest {
     public void getTopic() {
         SqlSession session = factory.openSession();
         TopicMapper mapper = session.getMapper(TopicMapper.class);
-        Topic topic = mapper.getTopic(1);
+        Topic topic = mapper.getTopic(5);
         System.out.print(topic);
         session.close();
     }

@@ -18,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 public class QuestionMapperTest {
     private SqlSessionFactory factory;
@@ -37,6 +38,17 @@ public class QuestionMapperTest {
         QuestionMapper mapper = session.getMapper(QuestionMapper.class);
         Question question = mapper.getQuestion(1);
         System.out.print(question);
+        session.close();
+    }
+
+    @Test
+    public void getAllQuestion() {
+        SqlSession session = factory.openSession();
+        QuestionMapper mapper = session.getMapper(QuestionMapper.class);
+        List<Question> questionList = mapper.getAllQuestions();
+        for (Question question : questionList) {
+            System.out.println(question);
+        }
         session.close();
     }
 

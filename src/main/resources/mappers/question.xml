@@ -22,9 +22,21 @@
         SELECT content,A,B,C,D,correct,description,id,topic_id FROM question WHERE id =#{id}
     </select>
 
+    <select id="getAllQuestions" resultMap="questionMap">
+        SELECT content,A,B,C,D,correct,description,id,topic_id FROM question WHERE 1
+    </select>
+
     <insert id="insertQuestion" parameterType="question" useGeneratedKeys="true" keyProperty="id">
         INSERT into question(content,A,B,C,D,correct,description,topic_id) VALUES
         (#{content},#{A},#{B},#{C},#{D},#{correct},#{description},#{topic.id})
     </insert>
+
+    <update id="updateQuestion" parameterType="question">
+        UPDATE question SET content=#{content},A=#{A},B=#{B},C=#{C},D=#{D},correct=#{correct},description=#{description} where id=#{id}
+    </update>
+
+    <delete id="deleteQuestion" parameterType="int">
+        DELETE from question WHERE id=#{id}
+    </delete>
 
 </mapper>

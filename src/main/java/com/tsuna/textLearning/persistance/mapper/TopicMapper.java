@@ -11,6 +11,5 @@ import com.tsuna.textLearning.persistance.bean.Topic;
 
 public interface TopicMapper {
     Topic getTopic(int id);
-
     void insertTopic(Topic topic);
 }

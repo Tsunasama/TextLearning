@@ -7,10 +7,15 @@
 
 package com.tsuna.textLearning.persistance.bean;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Topic {
     private String description;
     private int id;
 
+    @XmlElement(name = "description")
     public String getDescription() {
         return description;
     }
@@ -19,6 +24,7 @@ public class Topic {
         this.description = description;
     }
 
+    @XmlElement(name = "id")
     public int getId() {
         return id;
     }

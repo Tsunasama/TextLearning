@@ -18,7 +18,7 @@ public class DefaultChineseExeutorTest {
     public void execute() {
         DefaultChineseExeutor exeutor = new DefaultChineseExeutor();
         try {
-            DefaultChineseExecutionResult result = exeutor.execute(5, 0.01, 0.01, "data/train");
+            DefaultChineseExecutionResult result = exeutor.execute(3, 0.01, 0.01, "data/train");
             System.out.println(result.toString());
         } catch (IOException e) {
             e.printStackTrace();

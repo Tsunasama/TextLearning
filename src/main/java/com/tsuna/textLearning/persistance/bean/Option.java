@@ -7,6 +7,9 @@
 
 package com.tsuna.textLearning.persistance.bean;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum Option {
     A("A"), B("B"), C("C"), D("D");
 
